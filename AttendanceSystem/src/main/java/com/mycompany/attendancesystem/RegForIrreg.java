@@ -4,19 +4,17 @@
  */
 package com.mycompany.attendancesystem;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import javax.swing.JButton;
 import javax.swing.JFileChooser;
-import javax.swing.JTextField;
 import javax.swing.JOptionPane;
 
 
@@ -24,17 +22,23 @@ import javax.swing.JOptionPane;
  *
  * @author sharon
  */
-public class Register extends javax.swing.JFrame {
+public class RegForIrreg extends javax.swing.JFrame {
+    
+    
+        Connection conn = null;
+        PreparedStatement pst = null;
+      
 
-    Connection conn = null;
-    PreparedStatement pst = null;
+    
+    
 
     /**
-     * Creates new form Register
+     * Creates new form RegForIrreg
      */
-    public Register() {
+    public RegForIrreg() {
         initComponents();
-       a1.setBackground(new java.awt.Color(0, 0, 0, 1));
+        
+        a1.setBackground(new java.awt.Color(0, 0, 0, 1));
         a1.setOpaque(false);
         a2.setBackground(new java.awt.Color(0, 0, 0, 1));
         a2.setOpaque(false);
@@ -66,9 +70,10 @@ public class Register extends javax.swing.JFrame {
         a15.setOpaque(false);
         a16.setBackground(new java.awt.Color(0, 0, 0, 1));
         a16.setOpaque(false);
+        a17.setBackground(new java.awt.Color(0, 0, 0, 1));
+        a17.setOpaque(false);
         txtImagePath.setBackground(new java.awt.Color(0, 0, 0, 1));
         txtImagePath.setOpaque(false);
-        conn = AttendanceSystem.conn();
 
     }
 
@@ -82,19 +87,19 @@ public class Register extends javax.swing.JFrame {
     private void initComponents() {
 
         a11 = new javax.swing.JTextField();
-        a14 = new javax.swing.JTextField();
+        a15 = new javax.swing.JTextField();
         a9 = new javax.swing.JTextField();
-        s12 = new javax.swing.JTextField();
+        a12 = new javax.swing.JTextField();
         a13 = new javax.swing.JTextField();
         a2 = new javax.swing.JTextField();
-        a3 = new javax.swing.JTextField();
+        a14 = new javax.swing.JTextField();
         a1 = new javax.swing.JTextField();
         button1 = new javax.swing.JButton();
         a5 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         a4 = new javax.swing.JTextField();
+        a17 = new javax.swing.JPasswordField();
         a16 = new javax.swing.JPasswordField();
-        a15 = new javax.swing.JPasswordField();
         jLabel11 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -103,6 +108,7 @@ public class Register extends javax.swing.JFrame {
         a8 = new com.toedter.calendar.JDateChooser();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        a3 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -117,12 +123,13 @@ public class Register extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        a12 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -135,24 +142,24 @@ public class Register extends javax.swing.JFrame {
         });
         getContentPane().add(a11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, 490, 30));
 
-        a14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255)));
-        a14.addActionListener(new java.awt.event.ActionListener() {
+        a15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255)));
+        a15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                a14ActionPerformed(evt);
+                a15ActionPerformed(evt);
             }
         });
-        getContentPane().add(a14, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 440, 490, 30));
+        getContentPane().add(a15, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 480, 490, 30));
 
         a9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255)));
         getContentPane().add(a9, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, 220, 30));
 
-        s12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255)));
-        s12.addActionListener(new java.awt.event.ActionListener() {
+        a12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255)));
+        a12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                s12ActionPerformed(evt);
+                a12ActionPerformed(evt);
             }
         });
-        getContentPane().add(s12, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 380, 220, 30));
+        getContentPane().add(a12, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 380, 220, 30));
 
         a13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255)));
         a13.addActionListener(new java.awt.event.ActionListener() {
@@ -170,13 +177,13 @@ public class Register extends javax.swing.JFrame {
         });
         getContentPane().add(a2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 80, 240, 30));
 
-        a3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255)));
-        a3.addActionListener(new java.awt.event.ActionListener() {
+        a14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255)));
+        a14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                a3ActionPerformed(evt);
+                a14ActionPerformed(evt);
             }
         });
-        getContentPane().add(a3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 140, 30));
+        getContentPane().add(a14, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 430, 490, 30));
 
         a1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255)));
         a1.addActionListener(new java.awt.event.ActionListener() {
@@ -195,7 +202,7 @@ public class Register extends javax.swing.JFrame {
                 button1ActionPerformed(evt);
             }
         });
-        getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 560, 120, 30));
+        getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 600, 120, 30));
 
         a5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255)));
         a5.addActionListener(new java.awt.event.ActionListener() {
@@ -214,7 +221,7 @@ public class Register extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 560, 110, 30));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 600, 110, 30));
 
         a4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255)));
         a4.addActionListener(new java.awt.event.ActionListener() {
@@ -224,21 +231,21 @@ public class Register extends javax.swing.JFrame {
         });
         getContentPane().add(a4, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 140, 140, 30));
 
+        a17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255)));
+        a17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                a17ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(a17, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 540, 230, 30));
+
         a16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255)));
         a16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 a16ActionPerformed(evt);
             }
         });
-        getContentPane().add(a16, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 500, 230, 30));
-
-        a15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255)));
-        a15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                a15ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(a15, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 500, 220, 30));
+        getContentPane().add(a16, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 540, 220, 30));
 
         jLabel11.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
@@ -253,7 +260,7 @@ public class Register extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("Upload Photo:");
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 540, -1, -1));
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 580, -1, -1));
 
         a7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255)));
         a7.addActionListener(new java.awt.event.ActionListener() {
@@ -264,7 +271,7 @@ public class Register extends javax.swing.JFrame {
         getContentPane().add(a7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 220, 30));
 
         txtImagePath.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255)));
-        getContentPane().add(txtImagePath, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 560, 130, 30));
+        getContentPane().add(txtImagePath, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 600, 130, 30));
 
         a8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255)));
         getContentPane().add(a8, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 200, 230, 30));
@@ -272,12 +279,20 @@ public class Register extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("Confirm password:");
-        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 480, -1, -1));
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 520, -1, -1));
 
         jLabel18.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel18.setText("Parent guardian name:");
+        jLabel18.setText("Guardian's name:");
         getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 360, -1, -1));
+
+        a3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255)));
+        a3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                a3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(a3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 140, 30));
 
         jLabel12.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
@@ -286,13 +301,13 @@ public class Register extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Parent's Contact Number:");
+        jLabel9.setText("Guardian's Contact Number:");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 360, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel13.setText("First Name:");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, -1, -1));
+        jLabel13.setText("Irregular Subject:");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 410, -1, -1));
 
         a6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255)));
         a6.addActionListener(new java.awt.event.ActionListener() {
@@ -316,7 +331,7 @@ public class Register extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 560, -1, 30));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 600, -1, 30));
 
         jLabel8.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
@@ -336,12 +351,12 @@ public class Register extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Password:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 480, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 520, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Username:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 420, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 460, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -358,6 +373,11 @@ public class Register extends javax.swing.JFrame {
         jLabel20.setText("Last Name:");
         getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 120, -1, -1));
 
+        jLabel15.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel15.setText("First Name:");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, -1, -1));
+
         jLabel21.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(0, 0, 0));
         jLabel21.setText("Address:");
@@ -367,13 +387,13 @@ public class Register extends javax.swing.JFrame {
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(51, 51, 51));
         jLabel19.setText("FOR");
-        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 100, 90));
+        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 100, 90));
 
         jLabel22.setBackground(new java.awt.Color(0, 0, 0));
         jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(51, 51, 51));
         jLabel22.setText("STUDENTS");
-        getContentPane().add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 330, 90));
+        getContentPane().add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 330, 90));
 
         jLabel23.setBackground(new java.awt.Color(0, 0, 0));
         jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
@@ -384,13 +404,12 @@ public class Register extends javax.swing.JFrame {
         jLabel24.setBackground(new java.awt.Color(0, 0, 0));
         jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel24.setText("REGULAR");
-        getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 330, 90));
+        jLabel24.setText("IRREGULAR");
+        getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 330, 90));
 
-        a12.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
-        a12.setForeground(new java.awt.Color(255, 255, 255));
-        a12.setIcon(new javax.swing.ImageIcon("C:\\Users\\sharon\\Downloads\\registir.png")); // NOI18N
-        getContentPane().add(a12, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 0, 1500, 650));
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\sharon\\Downloads\\registir.png")); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1260, 660));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -399,13 +418,13 @@ public class Register extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_a11ActionPerformed
 
-    private void a14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_a14ActionPerformed
+    private void a15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_a15ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_a14ActionPerformed
+    }//GEN-LAST:event_a15ActionPerformed
 
-    private void s12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s12ActionPerformed
+    private void a12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_a12ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_s12ActionPerformed
+    }//GEN-LAST:event_a12ActionPerformed
 
     private void a13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_a13ActionPerformed
         // TODO add your handling code here:
@@ -415,14 +434,18 @@ public class Register extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_a2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
-        new AreYou().setVisible(true);// TODO add your handling code here:
+    private void a14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_a14ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_a14ActionPerformed
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void a1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_a1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_a1ActionPerformed
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-        String snumber, sgs, fname, mname, lname, sfix, bdate, address, gender, email, gname, uname, upass, cpass;
+        // TODO add your handling code here:
+        
+        String snumber, sgs, fname, mname, lname, sfix, bdate, address, gender, email, gname, irreg, uname, upass, cpass;
         snumber = a1.getText();
         sgs = a2.getText();
         fname = a3.getText();
@@ -436,18 +459,20 @@ public class Register extends javax.swing.JFrame {
         email = a11.getText();
         gname = a12.getText();
         int pcnumber = Integer.parseInt(a13.getText());
-        uname = a14.getText();
-        upass = String.valueOf(a15.getPassword());
-        cpass = String.valueOf(a16.getPassword());
+        irreg = a14.getText();
+        uname = a15.getText();
+        upass = String.valueOf(a16.getPassword());
+        cpass = String.valueOf(a17.getPassword());
         if (!upass.equals(cpass)) {
             JOptionPane.showMessageDialog(null, "Passwords do not match!", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
+
         // snumber, sgs,fname, mname, lname, sfix, cnumber, bdate, address, gender, email, gname, pcnumber, irreg, uname, upass, cpass, ph,
         try {
-            String sql = "INSERT INTO Regular (student_number, first_name, middle_name, last_name, suffix, contact_number, birth_date, address, gender, email, parent_name, parent_contact_number, user_name, password, confirm_password) "
-                    + "VALUES ('" + snumber + "','" + sgs + "','" + fname + "','" + mname + "', '" + lname + "', '" + sfix + "',  '" + cnumber + "','" + bdate + "', '" + address + "', '" + gender + "', '" + email + "' , '" + gname + "', , '" + pcnumber + "', '" + uname + "' , '" + upass + "')";
+            String sql = "INSERT INTO Irregular (student_number, first_name, middle_name, last_name, suffix, contact_number, birth_date, address, gender, email, parent_name, parent_contact_number, irregular, user_name, password, confirm_password) "
+                    + "VALUES ('" + snumber + "','" + sgs + "','" + fname + "','" + mname + "', '" + lname + "', '" + sfix + "',  '" + cnumber + "','" + bdate + "', '" + address + "', '" + gender + "', '" + email + "' , '" + gname + "', , '" + pcnumber + "' '" + irreg + "' , '" + uname + "' , '" + upass + "')";
             pst = conn.prepareStatement(sql);
             a1.setText("");
             a2.setText("");
@@ -462,9 +487,11 @@ public class Register extends javax.swing.JFrame {
             a11.setText("");
             a12.setText("");
             a13.setText("");
-            a15.setText("");
-            a16.setText("");
-          
+            a14.setText("");
+            a14.setText("");
+            a14.setText("");
+            a17.setText("");
+            txtImagePath.setText("");
 
             int rowsAffected = pst.executeUpdate();
             if (rowsAffected > 0) {
@@ -483,6 +510,7 @@ public class Register extends javax.swing.JFrame {
 
     // Clear fields after successful registration
     private void clearFields() {
+
         a1.setText("");
         a2.setText("");
         a3.setText("");
@@ -499,34 +527,31 @@ public class Register extends javax.swing.JFrame {
         a14.setText("");
         a15.setText("");
         a16.setText("");
-
+        a17.setText("");
+        txtImagePath.setText("");
 
     }//GEN-LAST:event_button1ActionPerformed
-
-    private void a1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_a1ActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_a1ActionPerformed
-
-    private void a3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_a3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_a3ActionPerformed
 
     private void a5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_a5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_a5ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+        new AreYou().setVisible(true);// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void a4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_a4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_a4ActionPerformed
 
+    private void a17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_a17ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_a17ActionPerformed
+
     private void a16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_a16ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_a16ActionPerformed
-
-    private void a15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_a15ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_a15ActionPerformed
 
     private void a7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_a7ActionPerformed
         // TODO add your handling code here:
@@ -540,9 +565,13 @@ public class Register extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_a10ActionPerformed
 
+    private void a3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_a3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_a3ActionPerformed
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    JFileChooser fileChooser = new JFileChooser();
+        JFileChooser fileChooser = new JFileChooser();
         int option = fileChooser.showOpenDialog(null);
 
         if (option == JFileChooser.APPROVE_OPTION) {
@@ -575,21 +604,39 @@ public class Register extends javax.swing.JFrame {
             }
         }
     
-
-
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(RegForIrreg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(RegForIrreg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(RegForIrreg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(RegForIrreg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Register().setVisible(true);
+                new RegForIrreg().setVisible(true);
             }
         });
     }
@@ -598,11 +645,12 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JTextField a1;
     private javax.swing.JTextField a10;
     private javax.swing.JTextField a11;
-    private javax.swing.JLabel a12;
+    private javax.swing.JTextField a12;
     private javax.swing.JTextField a13;
     private javax.swing.JTextField a14;
-    private javax.swing.JPasswordField a15;
+    private javax.swing.JTextField a15;
     private javax.swing.JPasswordField a16;
+    private javax.swing.JPasswordField a17;
     private javax.swing.JTextField a2;
     private javax.swing.JTextField a3;
     private javax.swing.JTextField a4;
@@ -614,11 +662,13 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JButton button1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -635,7 +685,6 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField s12;
     private javax.swing.JTextField txtImagePath;
     // End of variables declaration//GEN-END:variables
 }

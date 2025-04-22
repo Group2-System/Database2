@@ -56,12 +56,12 @@ public class Login extends javax.swing.JFrame {
 
         lbl1.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         lbl1.setForeground(new java.awt.Color(0, 0, 0));
-        lbl1.setText("Password");
+        lbl1.setText("Password:");
         getContentPane().add(lbl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 290, -1, -1));
 
         lbl2.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         lbl2.setForeground(new java.awt.Color(0, 0, 0));
-        lbl2.setText("Username");
+        lbl2.setText("Username:");
         getContentPane().add(lbl2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 210, -1, -1));
 
         a2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255)));
@@ -104,7 +104,7 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RegisterBottonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegisterBottonMouseClicked
-         new Register().setVisible(true);
+        new Occupation().setVisible(true);
         this.dispose();
 
     }//GEN-LAST:event_RegisterBottonMouseClicked
@@ -117,10 +117,16 @@ public class Login extends javax.swing.JFrame {
         String userpassword = String.valueOf(pass);
         
         try {
-            String sqlquery = "SELECT  * FROM LOGIN WHERE user_name = ? AND password = ?";
+            String sqlquery = "SELECT  * FROM Regular WHERE user_name = ? AND password = ?";
+                  
+
             pst = conn.prepareStatement(sqlquery);
             pst.setString(1, username);
             pst.setString(2, userpassword);
+           
+            
+            
+            
             rs = pst.executeQuery();
            if (!rs.next()){
                JOptionPane.showMessageDialog(null, "Username and Password is Incorrect!");

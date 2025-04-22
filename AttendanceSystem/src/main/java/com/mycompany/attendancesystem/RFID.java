@@ -51,6 +51,7 @@ public class RFID extends javax.swing.JFrame {
         a4 = new javax.swing.JLabel();
         a1 = new javax.swing.JLabel();
         a9 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         jButton3.setText("jButton3");
@@ -77,17 +78,17 @@ public class RFID extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Address:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 400, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 280, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Serif", 1, 64)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("PROFILE");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 50, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Name:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(51, 153, 255));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -99,7 +100,7 @@ public class RFID extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 10, 90, 30));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 20, 90, 30));
 
         jButton4.setBackground(new java.awt.Color(51, 153, 255));
         jButton4.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
@@ -113,52 +114,57 @@ public class RFID extends javax.swing.JFrame {
         });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 160, 30));
 
-        jLabel6.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Serif", 0, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Student Number:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 270, -1, -1));
+        jLabel6.setText("Regular's");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 50, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Parent Name:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 340, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 350, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("RFID:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 410, 50, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 410, 50, -1));
 
         jLabel9.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Parent Contact Number:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 270, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Strand/Section/Grade:");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 250, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Student Contact Number:");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, -1, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Age:");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 470, -1, -1));
-        getContentPane().add(a2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 300, 130, 30));
-        getContentPane().add(a3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, 120, 30));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, -1, -1));
+        getContentPane().add(a2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 130, 30));
+        getContentPane().add(a3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 370, 220, 30));
         getContentPane().add(a5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 496, 130, 30));
-        getContentPane().add(a6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 230, 140, 30));
-        getContentPane().add(a7, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 300, 220, 30));
-        getContentPane().add(a8, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 370, 140, 30));
-        getContentPane().add(a4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 436, 150, 30));
-        getContentPane().add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, 130, 30));
+        getContentPane().add(a6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 210, 150, 30));
+        getContentPane().add(a7, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 280, 220, 30));
+        getContentPane().add(a8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 350, 140, 30));
+        getContentPane().add(a4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 410, 150, 30));
+        getContentPane().add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 190, 30));
         getContentPane().add(a9, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 430, 140, 30));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\sharon\\Downloads\\profile (1).jpg")); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel13.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setText("Student Number:");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\sharon\\Downloads\\designnn.png")); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -247,6 +253,7 @@ if (response == JOptionPane.YES_OPTION) {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
