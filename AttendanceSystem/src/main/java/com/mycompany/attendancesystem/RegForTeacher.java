@@ -5,10 +5,12 @@
 package com.mycompany.attendancesystem;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -16,6 +18,7 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 /**
  *
  * @author sharon
@@ -368,7 +371,7 @@ public class RegForTeacher extends javax.swing.JFrame {
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
-        String em, gr, fname, mname, lname, sfix, ca, st, uname, upass, cpass;
+        String em, gr, fname, mname, lname, sfix, ca, st, uname, upass, cpass, photo;
         em = a1.getText();
         gr = a2.getText();
         fname = a3.getText();
@@ -385,12 +388,13 @@ public class RegForTeacher extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Passwords do not match!", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        photo = txtImagePath.getText();
 
         
                                                                                           // em, gr, fname, mname, lname, sfix, ca, st, uname, upass, cpass, photo
         try {
-            String sql = "INSERT INTO Teacher (Employee_number, gender, first_name, middle_name, last_name, suffix, contact_number, ccst_account, subject_teaching, user_name, password, confirm_password) "
-                    + "VALUES ('" + em + "','" + gr + "','" + fname + "','" + mname + "', '" + lname + "', '" + sfix + "',  '" + cnumber + "','" + ca + "', '" + st + "', '" + uname + "', '" + upass + "')";
+            String sql = "INSERT INTO Teacher (Employee_number, gender, first_name, middle_name, last_name, suffix, contact_number, ccst_account, subject_teaching, user_name, password, confirm_password, imagedata) "
+                    + "VALUES ('" + em + "','" + gr + "','" + fname + "','" + mname + "', '" + lname + "', '" + sfix + "',  '" + cnumber + "','" + ca + "', '" + st + "', '" + uname + "', '" + upass + "', '" + photo + "')";
             pst = conn.prepareStatement(sql);
             a1.setText("");
             a2.setText("");
@@ -404,6 +408,7 @@ public class RegForTeacher extends javax.swing.JFrame {
             a10.setText("");
             a11.setText("");
             a12.setText("");
+            txtImagePath.setText("");
           
             
         try {
@@ -462,37 +467,33 @@ public class RegForTeacher extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 JFileChooser fileChooser = new JFileChooser();
-        int option = fileChooser.showOpenDialog(null);
+        fileChooser.setDialogTitle("Select an Image");
+        fileChooser.setFileFilter(new FileNameExtensionFilter("Images", "jpg", "png", "jpeg", "gif"));
 
+        int option = fileChooser.showOpenDialog(null);
         if (option == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
-
-            if (selectedFile != null) {
-                try {
-                    // Create images directory if it doesn't exist
-                    File imageDir = new File("src/images");
-                    if (!imageDir.exists()) {
-                        imageDir.mkdirs();
-                    }
-
-                    // Copy the selected file into the images directory
-                    File copiedFile = new File(imageDir, selectedFile.getName());
-                    Files.copy(selectedFile.toPath(), copiedFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-
-                    // Set the relative path to the text field
-                    String relativePath = "src/images/" + selectedFile.getName();
-                    txtImagePath.setText(relativePath);
-
-                    JOptionPane.showMessageDialog(null, "Image uploaded successfully!");
-
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                    JOptionPane.showMessageDialog(null, "Error uploading image: " + ex.getMessage());
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "No file selected!");
-            }
+            uploadToAccess(selectedFile);
         }
+    }
+
+    public static void uploadToAccess(File imageFile) {
+         String url = "jdbc:ucanaccess://C:/Users/sharon/Documents/Database2.accdb";
+    String insertSQL = "INSERT INTO Regular (imagedata) VALUES (?)";
+
+    try (Connection conn = DriverManager.getConnection(url);
+         PreparedStatement pstmt = conn.prepareStatement(insertSQL);
+         FileInputStream fis = new FileInputStream(imageFile)) {
+
+        pstmt.setBinaryStream(1, fis, (int) imageFile.length());
+        pstmt.executeUpdate();
+
+        JOptionPane.showMessageDialog(null, "Image uploaded!");
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+    }
             // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 

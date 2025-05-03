@@ -4,20 +4,19 @@
  */
 package com.mycompany.attendancesystem;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
+import java.io.FileInputStream;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import javax.swing.JButton;
+
 import javax.swing.JFileChooser;
-import javax.swing.JTextField;
+
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 
 /**
@@ -390,7 +389,7 @@ public class Register extends javax.swing.JFrame {
         a12.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
         a12.setForeground(new java.awt.Color(255, 255, 255));
         a12.setIcon(new javax.swing.ImageIcon("C:\\Users\\sharon\\Downloads\\registir.png")); // NOI18N
-        getContentPane().add(a12, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 0, 1500, 650));
+        getContentPane().add(a12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1500, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -422,20 +421,21 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-        String snumber, sgs, fname, mname, lname, sfix, bdate, address, gender, email, gname, uname, upass, cpass;
+        String snumber, sgs, fname, mname, lname, sfix, bdate, address, gender, email, gname, uname, upass, cpass, img;
         snumber = a1.getText();
         sgs = a2.getText();
         fname = a3.getText();
         mname = a4.getText();
         lname = a5.getText();
         sfix = a6.getText();
-        int cnumber = Integer.parseInt(a7.getText());
+        String cnumber = a7.getText().trim();
+
         bdate = (a8.getDate() != null) ? new SimpleDateFormat("MM-dd-yyyy").format(a8.getDate()) : "";
         address = a9.getText();
         gender = a10.getText();
         email = a11.getText();
-        gname = a12.getText();
-        int pcnumber = Integer.parseInt(a13.getText());
+        gname = s12.getText();
+        String pcnumber = a13.getText().trim();
         uname = a14.getText();
         upass = String.valueOf(a15.getPassword());
         cpass = String.valueOf(a16.getPassword());
@@ -443,11 +443,12 @@ public class Register extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Passwords do not match!", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+      
 
         // snumber, sgs,fname, mname, lname, sfix, cnumber, bdate, address, gender, email, gname, pcnumber, irreg, uname, upass, cpass, ph,
         try {
-            String sql = "INSERT INTO Regular (student_number, first_name, middle_name, last_name, suffix, contact_number, birth_date, address, gender, email, parent_name, parent_contact_number, user_name, password, confirm_password) "
-                    + "VALUES ('" + snumber + "','" + sgs + "','" + fname + "','" + mname + "', '" + lname + "', '" + sfix + "',  '" + cnumber + "','" + bdate + "', '" + address + "', '" + gender + "', '" + email + "' , '" + gname + "', , '" + pcnumber + "', '" + uname + "' , '" + upass + "')";
+            String sql = "INSERT INTO Regular (student_number,strand_section_grade, first_name, middle_name, last_name, suffix, contact_number, birth_date, address, gender, email, parent_name, parent_contact_number, user_name, password, confirm_password) "
+                    + "VALUES ('" + snumber + "','" + sgs + "','" + fname + "','" + mname + "', '" + lname + "', '" + sfix + "',  '" + cnumber + "','" + bdate + "', '" + address + "', '" + gender + "', '" + email + "' , '" + gname + "', '" + pcnumber + "', '" + uname + "' , '" + upass + "', '" + cpass + "')";
             pst = conn.prepareStatement(sql);
             a1.setText("");
             a2.setText("");
@@ -460,17 +461,19 @@ public class Register extends javax.swing.JFrame {
             a9.setText("");
             a10.setText("");
             a11.setText("");
-            a12.setText("");
+            s12.setText("");
             a13.setText("");
             a15.setText("");
-            a16.setText("");
+    
+           
+            
           
 
             int rowsAffected = pst.executeUpdate();
             if (rowsAffected > 0) {
 
                 JOptionPane.showMessageDialog(this, "Sign up Successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
-                clearFields(); // Clear all fields after successful registration
+                clearFields();
                 this.dispose();
                 new Login().setVisible(true);
             } else {
@@ -542,39 +545,36 @@ public class Register extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    JFileChooser fileChooser = new JFileChooser();
-        int option = fileChooser.showOpenDialog(null);
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Select an Image");
+        fileChooser.setFileFilter(new FileNameExtensionFilter("Images", "jpg", "png", "jpeg", "gif"));
 
+        int option = fileChooser.showOpenDialog(null);
         if (option == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
-
-            if (selectedFile != null) {
-                try {
-                    // Create images directory if it doesn't exist
-                    File imageDir = new File("src/images");
-                    if (!imageDir.exists()) {
-                        imageDir.mkdirs();
-                    }
-
-                    // Copy the selected file into the images directory
-                    File copiedFile = new File(imageDir, selectedFile.getName());
-                    Files.copy(selectedFile.toPath(), copiedFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-
-                    // Set the relative path to the text field
-                    String relativePath = "src/images/" + selectedFile.getName();
-                    txtImagePath.setText(relativePath);
-
-                    JOptionPane.showMessageDialog(null, "Image uploaded successfully!");
-
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                    JOptionPane.showMessageDialog(null, "Error uploading image: " + ex.getMessage());
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "No file selected!");
-            }
+            uploadToAccess(selectedFile);
         }
+    }
+
+    public static void uploadToAccess(File imageFile) {
+         String url = "jdbc:ucanaccess://C:/Users/sharon/Documents/Database2.accdb";
+    String insertSQL = "INSERT INTO Regular (imagedata) VALUES (?)";
+
+    try (Connection conn = DriverManager.getConnection(url);
+         PreparedStatement pstmt = conn.prepareStatement(insertSQL);
+         FileInputStream fis = new FileInputStream(imageFile)) {
+
+        pstmt.setBinaryStream(1, fis, (int) imageFile.length());
+        pstmt.executeUpdate();
+
+        JOptionPane.showMessageDialog(null, "Image uploaded!");
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+    }
     
+
 
 
     }//GEN-LAST:event_jButton2ActionPerformed

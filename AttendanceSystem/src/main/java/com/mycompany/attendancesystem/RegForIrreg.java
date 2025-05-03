@@ -5,17 +5,20 @@
 package com.mycompany.attendancesystem;
 
 import java.io.File;
+import java.io.FileInputStream;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
+import java.sql.DriverManager;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 
 /**
@@ -472,7 +475,7 @@ public class RegForIrreg extends javax.swing.JFrame {
         // snumber, sgs,fname, mname, lname, sfix, cnumber, bdate, address, gender, email, gname, pcnumber, irreg, uname, upass, cpass, ph,
         try {
             String sql = "INSERT INTO Irregular (student_number, first_name, middle_name, last_name, suffix, contact_number, birth_date, address, gender, email, parent_name, parent_contact_number, irregular, user_name, password, confirm_password) "
-                    + "VALUES ('" + snumber + "','" + sgs + "','" + fname + "','" + mname + "', '" + lname + "', '" + sfix + "',  '" + cnumber + "','" + bdate + "', '" + address + "', '" + gender + "', '" + email + "' , '" + gname + "', , '" + pcnumber + "' '" + irreg + "' , '" + uname + "' , '" + upass + "')";
+                    + "VALUES ('" + snumber + "','" + sgs + "','" + fname + "','" + mname + "', '" + lname + "', '" + sfix + "',  '" + cnumber + "','" + bdate + "', '" + address + "', '" + gender + "', '" + email + "' , '" + gname + "',  '" + pcnumber + "' '" + irreg + "' , '" + uname + "' , '" + upass + "')";
             pst = conn.prepareStatement(sql);
             a1.setText("");
             a2.setText("");
@@ -571,39 +574,34 @@ public class RegForIrreg extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        JFileChooser fileChooser = new JFileChooser();
-        int option = fileChooser.showOpenDialog(null);
+       JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Select an Image");
+        fileChooser.setFileFilter(new FileNameExtensionFilter("Images", "jpg", "png", "jpeg", "gif"));
 
+        int option = fileChooser.showOpenDialog(null);
         if (option == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
-
-            if (selectedFile != null) {
-                try {
-                    // Create images directory if it doesn't exist
-                    File imageDir = new File("src/images");
-                    if (!imageDir.exists()) {
-                        imageDir.mkdirs();
-                    }
-
-                    // Copy the selected file into the images directory
-                    File copiedFile = new File(imageDir, selectedFile.getName());
-                    Files.copy(selectedFile.toPath(), copiedFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-
-                    // Set the relative path to the text field
-                    String relativePath = "src/images/" + selectedFile.getName();
-                    txtImagePath.setText(relativePath);
-
-                    JOptionPane.showMessageDialog(null, "Image uploaded successfully!");
-
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                    JOptionPane.showMessageDialog(null, "Error uploading image: " + ex.getMessage());
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "No file selected!");
-            }
+            uploadToAccess(selectedFile);
         }
-    
+    }
+
+    public static void uploadToAccess(File imageFile) {
+         String url = "jdbc:ucanaccess://C:/Users/sharon/Documents/Database2.accdb";
+    String insertSQL = "INSERT INTO Regular (imagedata) VALUES (?)";
+
+    try (Connection conn = DriverManager.getConnection(url);
+         PreparedStatement pstmt = conn.prepareStatement(insertSQL);
+         FileInputStream fis = new FileInputStream(imageFile)) {
+
+        pstmt.setBinaryStream(1, fis, (int) imageFile.length());
+        pstmt.executeUpdate();
+
+        JOptionPane.showMessageDialog(null, "Image uploaded!");
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+    }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

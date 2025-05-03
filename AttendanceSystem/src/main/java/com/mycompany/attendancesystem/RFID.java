@@ -178,25 +178,26 @@ public class RFID extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        int response = JOptionPane.showConfirmDialog(
-    this, // 
-    "Are you sure you want to log out?", 
-    "Confirm Logout", 
-    JOptionPane.YES_NO_OPTION, 
-    JOptionPane.QUESTION_MESSAGE 
-);
+        int result = JOptionPane.showConfirmDialog(
+                null,
+                "Are you sure you want to log out?",
+                "Confirm Logout",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE
+        );
+        if (result == JOptionPane.YES_OPTION) {
+            // Do logout logic here
+            JOptionPane.showMessageDialog(null, "You have been logged out.");
+            this.dispose();
+            new Login().setVisible(true);
 
-if (response == JOptionPane.YES_OPTION) {
-    this.dispose();
-    new Login().setVisible(true);
-}
-        
-      
+        }
+          
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+    this.dispose();
     new Attendance().setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
