@@ -12,12 +12,14 @@ import java.sql.SQLException;
 import java.util.Date;
 
 
+
+
 /**
  *
  * @author sharon
  */
 public class RFID2 {
-     private static final String DB_URL = "jdbc:ucanaccess://path/to/your/Database2.accdb";
+     private static final String DB_URL = "jdbc:ucanaccess://C;//Users//sharon//Documents//Database2.accdb";
 
     public static void main(String[] args) {
         // Simulate reading RFID data
@@ -38,7 +40,7 @@ private static String readRFID() {
         
     }
   private static void insertRFIDData(String tagId) {
-        String insertSQL = "INSERT INTO YourTableName (TagID, Timestamp) VALUES (?, ?)";
+        String insertSQL = "INSERT INTO RFID (TagID, Timestamp) VALUES (?, ?)";
 
         try (Connection conn = DriverManager.getConnection(DB_URL);
              PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {

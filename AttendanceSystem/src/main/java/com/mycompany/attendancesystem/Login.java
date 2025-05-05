@@ -117,7 +117,7 @@ public class Login extends javax.swing.JFrame {
         String userpassword = String.valueOf(pass);
         
         try {
-            String sqlquery = "SELECT  * FROM Regular WHERE user_name = ? AND password = ?";
+            String sqlquery = "SELECT  * FROM Regular, Irregular, Teacher WHERE user_name = ? AND password = ?";
                   
 
             pst = conn.prepareStatement(sqlquery);

@@ -445,43 +445,7 @@ public class Register extends javax.swing.JFrame {
         }
       
 
-        // snumber, sgs,fname, mname, lname, sfix, cnumber, bdate, address, gender, email, gname, pcnumber, irreg, uname, upass, cpass, ph,
-        try {
-            String sql = "INSERT INTO Regular (student_number,strand_section_grade, first_name, middle_name, last_name, suffix, contact_number, birth_date, address, gender, email, parent_name, parent_contact_number, user_name, password, confirm_password) "
-                    + "VALUES ('" + snumber + "','" + sgs + "','" + fname + "','" + mname + "', '" + lname + "', '" + sfix + "',  '" + cnumber + "','" + bdate + "', '" + address + "', '" + gender + "', '" + email + "' , '" + gname + "', '" + pcnumber + "', '" + uname + "' , '" + upass + "', '" + cpass + "')";
-            pst = conn.prepareStatement(sql);
-            a1.setText("");
-            a2.setText("");
-            a3.setText("");
-            a4.setText("");
-            a5.setText("");
-            a6.setText("");
-            a7.setText("");
-            a8.setDate(null);
-            a9.setText("");
-            a10.setText("");
-            a11.setText("");
-            s12.setText("");
-            a13.setText("");
-            a15.setText("");
     
-           
-            
-          
-
-            int rowsAffected = pst.executeUpdate();
-            if (rowsAffected > 0) {
-
-                JOptionPane.showMessageDialog(this, "Sign up Successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
-                clearFields();
-                this.dispose();
-                new Login().setVisible(true);
-            } else {
-                JOptionPane.showMessageDialog(this, "Sign up Failed!", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Database Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
     }
 
     // Clear fields after successful registration

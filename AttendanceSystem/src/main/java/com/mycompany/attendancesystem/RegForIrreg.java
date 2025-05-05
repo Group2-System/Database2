@@ -503,13 +503,16 @@ public class RegForIrreg extends javax.swing.JFrame {
                 clearFields(); // Clear all fields after successful registration
                 this.dispose();
                 new Login().setVisible(true);
+                new Dashboard().setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(this, "Sign up Failed!", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Database Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
+          
     }
+    
 
     // Clear fields after successful registration
     private void clearFields() {
@@ -574,9 +577,12 @@ public class RegForIrreg extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        
+    
+
        JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Select an Image");
-        fileChooser.setFileFilter(new FileNameExtensionFilter("Images", "jpg", "png", "jpeg", "gif"));
+        fileChooser.setFileFilter(new FileNameExtensionFilter("Images", "jpg", "png", "jpeg" ));
 
         int option = fileChooser.showOpenDialog(null);
         if (option == JFileChooser.APPROVE_OPTION) {
@@ -602,6 +608,8 @@ public class RegForIrreg extends javax.swing.JFrame {
         e.printStackTrace();
         JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
     }
+  
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
