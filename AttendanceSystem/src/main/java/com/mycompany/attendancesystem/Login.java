@@ -133,7 +133,7 @@ public class Login extends javax.swing.JFrame {
                }else{
                JOptionPane.showMessageDialog(null, "Login Successful");
                    this.dispose(); 
-new RFID().setVisible(true);
+new Dashboard().setVisible(true);
 
               
                

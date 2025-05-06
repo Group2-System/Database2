@@ -36,7 +36,7 @@ public class Attendance extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTabbedPane2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 260, 230));
+        getContentPane().add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 260, 230));
 
         jButton1.setBackground(new java.awt.Color(51, 153, 255));
         jButton1.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
@@ -67,7 +67,7 @@ public class Attendance extends javax.swing.JFrame {
         jLabel4.setText("ATTENDANCE");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\sharon\\Downloads\\atten.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\sharon\\Downloads\\designn.png")); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1310, 660));
 
@@ -77,13 +77,15 @@ public class Attendance extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-    new Grades().setVisible(true);
+        new Attendance().setVisible(true);
         
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:his.dispose();
+    new Grades().setVisible(true);
+    this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

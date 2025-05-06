@@ -58,6 +58,7 @@ public class RFID extends javax.swing.JFrame {
         a1 = new javax.swing.JLabel();
         a9 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         jLabel3 = new javax.swing.JLabel();
 
         jButton3.setText("jButton3");
@@ -163,6 +164,7 @@ public class RFID extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Student Number:");
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, -1, -1));
+        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 590, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\sharon\\Downloads\\designnn.png")); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, -1, -1));
@@ -271,6 +273,7 @@ public class RFID extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

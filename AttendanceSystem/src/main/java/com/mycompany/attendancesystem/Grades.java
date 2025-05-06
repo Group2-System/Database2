@@ -52,6 +52,7 @@ public class Grades extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -222,6 +223,11 @@ public class Grades extends javax.swing.JFrame {
         });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 170, 40));
 
+        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField1.setText("jTextField1");
+        jTextField1.setBorder(null);
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, 360, -1));
+
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\sharon\\Downloads\\grids.png")); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1350, 660));
 
@@ -249,10 +255,13 @@ public class Grades extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        this.dispose();
+        new Attendance().setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
@@ -320,5 +329,6 @@ public class Grades extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
