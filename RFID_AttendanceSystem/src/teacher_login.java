@@ -1,12 +1,12 @@
+
 import java.sql.Connection;
-import java.sql.Statement;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /*
@@ -18,14 +18,15 @@ import javax.swing.JOptionPane;
  *
  * @author sharon
  */
-public class login extends javax.swing.JFrame {
+public class teacher_login extends javax.swing.JFrame {
 
     /**
-     * Creates new form registration
+     * Creates new form teacher_login
      */
-    public login() {
+    public teacher_login() {
         initComponents();
-        try {
+    
+    try {
             Connection();
         } catch (SQLException ex) {
             Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
@@ -37,9 +38,7 @@ public class login extends javax.swing.JFrame {
     Statement st;
     PreparedStatement pst;
     ResultSet rs;
-    
-
-    private static final String DbName = "attendance";
+     private static final String DbName = "attendance";
     private static final String DbDriver = "com.mysql.cj.jdbc.Driver";
     private static final String DbUrl = "jdbc:mysql://localhost:3306/" + DbName;
     private static final String DbUsername = "root";
@@ -70,12 +69,12 @@ public class login extends javax.swing.JFrame {
 
         lbl1 = new javax.swing.JLabel();
         lbl2 = new javax.swing.JLabel();
-        pass = new javax.swing.JPasswordField();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        pass = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
         RegisterBotton = new javax.swing.JLabel();
         uname = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -91,9 +90,6 @@ public class login extends javax.swing.JFrame {
         lbl2.setText("Username:");
         getContentPane().add(lbl2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 180, -1, -1));
 
-        pass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255)));
-        getContentPane().add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 290, 240, 30));
-
         jButton3.setBackground(new java.awt.Color(51, 102, 255));
         jButton3.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
@@ -105,16 +101,8 @@ public class login extends javax.swing.JFrame {
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 340, 120, 30));
 
-        jButton4.setBackground(new java.awt.Color(51, 102, 255));
-        jButton4.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("BACK");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 340, 110, 30));
+        pass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255)));
+        getContentPane().add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 290, 240, 30));
 
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("Don't have an account?");
@@ -133,6 +121,17 @@ public class login extends javax.swing.JFrame {
         uname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255)));
         getContentPane().add(uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 210, 240, 30));
 
+        jButton4.setBackground(new java.awt.Color(51, 102, 255));
+        jButton4.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("BACK");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 340, 110, 30));
+
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\sharon\\Downloads\\Adobe Express - file (1).png")); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -144,33 +143,23 @@ public class login extends javax.swing.JFrame {
         username = uname.getText();
         char[] passs = pass.getPassword();
         String userpassword = String.valueOf(passs);
-        
+
         try {
-            String sqlquery = "SELECT  * FROM accountdetails WHERE accUname = ? AND accPass = ?";
-                  
+            String sqlquery = "SELECT  * FROM teacher_register WHERE accUname = ? AND accPass = ?";
 
             pst = con.prepareStatement(sqlquery);
             pst.setString(1, username);
             pst.setString(2, userpassword);
-           
-            
-            
-            
-            rs = pst.executeQuery();
+
+              rs = pst.executeQuery();
            if (!rs.next()){
                JOptionPane.showMessageDialog(null, "Username and Password is Incorrect!");
                }else{
                JOptionPane.showMessageDialog(null, "Login Successful");
-       
-
-              
-               
            }
-           }catch(SQLException e){
-                   JOptionPane.showMessageDialog(null, e);
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
         }
-                 
-   
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -181,7 +170,7 @@ public class login extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-         new startingframe().setVisible(true);
+        new startingframe().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -202,21 +191,20 @@ public class login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(teacher_login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(teacher_login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(teacher_login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(teacher_login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new login().setVisible(true);
+                new teacher_login().setVisible(true);
             }
         });
     }
