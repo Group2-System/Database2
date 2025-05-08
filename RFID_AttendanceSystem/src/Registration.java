@@ -201,7 +201,7 @@ public class Registration extends javax.swing.JFrame {
 
         jLabel18.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel18.setText("Parent guardian name:");
+        jLabel18.setText("Parent/Guardian name:");
 
         s9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255)));
         s9.addActionListener(new java.awt.event.ActionListener() {
